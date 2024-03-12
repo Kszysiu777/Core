@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kbizon <kbizon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 14:21:51 by kbizon            #+#    #+#             */
-/*   Updated: 2024/03/11 14:21:52 by kbizon           ###   ########.fr       */
+/*   Created: 2024/01/10 21:35:22 by kbizon            #+#    #+#             */
+/*   Updated: 2024/02/19 16:12:32 by kbizon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-int	get_next_line(const int fd, char **line)
+size_t	ft_strlen(const char *s)
 {
-	
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main()
+// {
+// 	char c[] = "uwaeglfih";
+// 	printf("%d",ft_strlen(c));
+// }
