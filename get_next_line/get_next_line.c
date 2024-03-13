@@ -6,62 +6,114 @@
 /*   By: kbizon <kbizon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:21:51 by kbizon            #+#    #+#             */
-/*   Updated: 2024/03/11 14:21:52 by kbizon           ###   ########.fr       */
+/*   Updated: 2024/03/13 17:07:20 by kbizon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(char *s)
+char	*ft_new_line(char *str)
 {
-	int	i;
+	char	*new_line;
+	int		i;
+	int		j;
 
 	i = 0;
-	while (s[i])
+	while (str[i] && str[i] != '\n')
 		i++;
-	return (i);
+	if (!str[i])
+	{
+		free(str);
+		return (NULL);
+	}
+	new_line = (char *)malloc((ft_strlen(str) - i + 1) * sizeof(char));
+	if (!new_line)
+		return (NULL);
+	i++;
+	j = 0;
+	while (str[i])
+		new_line[j++] = str[i++];
+	new_line[j] = '\0';
+	free(str);
+	return (new_line);
+}
+
+char	*ft_next_line(char *str)
+{
+	char	*next_line;
+	int		i;
+
+	i = 0;
+	while (str[i] && str[i] != '\n')
+		i++;
+	next_line = (char *)malloc((i + 2) * sizeof(char));
+	if (!next_line)
+		return (NULL);
+	i = 0;
+	while (str[i] && str[i] != '\n')
+	{
+		next_line[i] = str[i];
+		i++;
+	}
+	if (str[i] == '\n')
+	{
+		next_line[i] = str[i];
+		i++;
+	}
+	next_line[i] = '\0'
+	return (next_line);
+}
+
+char	*ft_reader(int fd, char *str)
+{
+	char	*buf;
+	int		read_bytes;
+
+	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf)
+		return (NULL);
+	read_bytes = 1;
+	while ((!ft_strchr(str, '\n')) && read_bytes > 0)
+	{
+		read_bytes = read(fd, buf, BUFFER_SIZE);
+		if (read_bytes == -1)
+		{
+			free(buf);
+			return (NULL);
+		}
+		buf[read_bytes] = '\0';
+		str = ft_strjoin(str, buf);
+	}
+	free(buf);
+	return (str);
 }
 
 char	*get_next_line(int fd)
 {
-	static char *temp;
-	char		*buffer;
-	int			bytes_read;
+	static char *str;
+	char		*next_line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0)< 0)
-		return (free(temp), temp = NULL, NULL);
-	if (have_n(temp))
-		return (print_line(&temp));
-	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buffer)
+	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	bytes_read = 1;
-	while (bytes_read > 0)
-	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		buffer[bytes_read] = 0;
-		temp = ft_strjoin(temp, buffer);
-		if (have_n(temp))
-			break ;
-	}
-	if (buffer)
-		free(buffer);
-	buffer = NULL;
-	return (print_line(&temp));
+	str = ft_reader(fd, str);
+	if (!str)
+		return (NULL);
+	if (str[0] == 0)
+		return (NULL);
+	next_line = ft_next_line(str);
+	str = ft_new_line(str);
+	return (next_line);
 }
 
 int main()
 {
-	int fd = open("fd", O_RDONLY);
-	char *str;
-	int i = 0;
-
-	while (i < 10)
-	{
-		str = get_next_line(fd);
-		printf("%s", str);
-		free(str);
-		i++;
-	}
-	return (0);
+	int fd = open("text", O_RDONLY);
+	printf("Your string: %s", get_next_line(fd));
+	printf("Your string: %s", get_next_line(fd));
+	printf("Your string: %s", get_next_line(fd));
+	printf("Your string: %s", get_next_line(fd));
+	printf("Your string: %s", get_next_line(fd));
+	printf("Your string: %s", get_next_line(fd));
+	printf("Your string: %s", get_next_line(fd));
+	close(fd);
 }
