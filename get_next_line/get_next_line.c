@@ -6,7 +6,7 @@
 /*   By: kbizon <kbizon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:21:51 by kbizon            #+#    #+#             */
-/*   Updated: 2024/03/13 17:07:20 by kbizon           ###   ########.fr       */
+/*   Updated: 2024/03/14 22:03:09 by kbizon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*ft_next_line(char *str)
 		next_line[i] = str[i];
 		i++;
 	}
-	next_line[i] = '\0'
+	next_line[i] = '\0';
 	return (next_line);
 }
 
@@ -90,7 +90,7 @@ char	*ft_reader(int fd, char *str)
 
 char	*get_next_line(int fd)
 {
-	static char *str;
+	static char	*str;
 	char		*next_line;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
@@ -105,15 +105,15 @@ char	*get_next_line(int fd)
 	return (next_line);
 }
 
-int main()
-{
-	int fd = open("text", O_RDONLY);
-	printf("Your string: %s", get_next_line(fd));
-	printf("Your string: %s", get_next_line(fd));
-	printf("Your string: %s", get_next_line(fd));
-	printf("Your string: %s", get_next_line(fd));
-	printf("Your string: %s", get_next_line(fd));
-	printf("Your string: %s", get_next_line(fd));
-	printf("Your string: %s", get_next_line(fd));
-	close(fd);
-}
+// int	main()
+// {
+// 	int fd = open("text", O_RDONLY);
+// 	printf("Your string: %s", get_next_line(fd));
+// 	printf("Your string: %s", get_next_line(fd));
+// 	printf("Your string: %s", get_next_line(fd));
+// 	printf("Your string: %s", get_next_line(fd));
+// 	printf("Your string: %s", get_next_line(fd));
+// 	printf("Your string: %s", get_next_line(fd));
+// 	printf("Your string: %s", get_next_line(fd));
+// 	close(fd);
+// }
