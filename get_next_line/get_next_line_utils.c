@@ -6,7 +6,7 @@
 /*   By: kbizon <kbizon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:21:29 by kbizon            #+#    #+#             */
-/*   Updated: 2024/04/21 10:32:04 by kbizon           ###   ########.fr       */
+/*   Updated: 2024/04/21 10:43:21 by kbizon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,10 @@ char	*ft_strjoin(char *string, char *buf)
 	str = malloc(sizeof(char) * (ft_strlen(string) + ft_strlen(buf) + 1));
 	if (!str)
 		return (NULL);
-	i = 0;
+	i = -1;
 	j = 0;
-	while (string[i])
-	{
+	while (string[++i])
 		str[i] = string[i];
-		i++;
-	}
 	while (buf[j])
 		str[i++] = buf[j++];
 	str[ft_strlen(string) + ft_strlen(buf)] = '\0';
