@@ -6,7 +6,7 @@
 /*   By: kbizon <kbizon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:16:47 by kbizon            #+#    #+#             */
-/*   Updated: 2024/03/13 17:17:37 by kbizon           ###   ########.fr       */
+/*   Updated: 2024/04/21 10:30:28 by kbizon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ char	*get_next_line(int fd);
 char	*ft_reader(int fd, char *str);
 char	*ft_next_line(char *str);
 char	*ft_new_line(char *str);
-char	*ft_strchr(const char *s, int c);
-char	*ft_strjoin(char const *s1, char const *s2);
-size_t	ft_strlen(const char *s);
+char	*ft_strchr(char *s, int c);
+char	*ft_strjoin(char *string, char *buf);
+size_t	ft_strlen(char *s);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kbizon <kbizon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:21:51 by kbizon            #+#    #+#             */
-/*   Updated: 2024/03/14 22:03:09 by kbizon           ###   ########.fr       */
+/*   Updated: 2024/04/21 10:38:56 by kbizon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,15 +105,21 @@ char	*get_next_line(int fd)
 	return (next_line);
 }
 
-// int	main()
-// {
-// 	int fd = open("text", O_RDONLY);
-// 	printf("Your string: %s", get_next_line(fd));
-// 	printf("Your string: %s", get_next_line(fd));
-// 	printf("Your string: %s", get_next_line(fd));
-// 	printf("Your string: %s", get_next_line(fd));
-// 	printf("Your string: %s", get_next_line(fd));
-// 	printf("Your string: %s", get_next_line(fd));
-// 	printf("Your string: %s", get_next_line(fd));
-// 	close(fd);
-// }
+/* int main()
+{
+	char *string;
+	int fd = open("txt", O_RDONLY);
+	string = get_next_line(fd); printf("Your string: %s", string); free(string);
+	string = get_next_line(fd); printf("Your string: %s", string); free(string);
+	string = get_next_line(fd); printf("Your string: %s", string); free(string);
+	string = get_next_line(fd); printf("Your string: %s", string); free(string);
+	string = get_next_line(fd); printf("Your string: %s", string); free(string);
+	string = get_next_line(fd); printf("Your string: %s", string); free(string);
+	string = get_next_line(fd); printf("Your string: %s", string); free(string);
+	string = get_next_line(fd); printf("Your string: %s", string); free(string);
+	string = get_next_line(fd); printf("Your string: %s", string); free(string);
+	string = get_next_line(fd); printf("Your string: %s", string); free(string);
+	string = get_next_line(fd); printf("Your string: %s", string); free(string);
+	string = get_next_line(fd); printf("Your string: %s", string); free(string);
+	close(fd);
+} */

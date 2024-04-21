@@ -6,13 +6,13 @@
 /*   By: kbizon <kbizon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:21:29 by kbizon            #+#    #+#             */
-/*   Updated: 2024/04/20 22:47:45 by kbizon           ###   ########.fr       */
+/*   Updated: 2024/04/21 10:32:04 by kbizon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen(char *s)
 {
 	int	i;
 
@@ -24,34 +24,37 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *string, char *buf)
 {
-	if (!s1)
-	{
-		s1 = (char *)malloc(1 * sizeof(char));
-		s1[0] = '\0';
-	}
-	char			*join;
+	char			*str;
 	unsigned int	i;
 	unsigned int	j;
 
-	if (!s1 || !s2)
+	if (!string)
+	{
+		string = (char *)malloc(1 * sizeof(char));
+		string[0] = '\0';
+	}
+	if (!string || !buf)
 		return (NULL);
-	join = (char *)malloc(sizeof(*s1) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!join)
+	str = malloc(sizeof(char) * (ft_strlen(string) + ft_strlen(buf) + 1));
+	if (!str)
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (s1[i])
-		join[j++] = s1[i++];
-	i = 0;
-	while (s2[i])
-		join[j++] = s2[i++];
-	join[j] = 0;
-	return (join);
+	while (string[i])
+	{
+		str[i] = string[i];
+		i++;
+	}
+	while (buf[j])
+		str[i++] = buf[j++];
+	str[ft_strlen(string) + ft_strlen(buf)] = '\0';
+	free(string);
+	return (str);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
 	int	i;
 
@@ -64,7 +67,7 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)(s + i));
 		++i;
 	}
-	if (c == 0)
+	if ((char)c == 0)
 		return ((char *)(s + i));
 	return (NULL);
 }
