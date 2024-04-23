@@ -6,7 +6,7 @@
 /*   By: kbizon <kbizon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:21:51 by kbizon            #+#    #+#             */
-/*   Updated: 2024/04/23 10:41:28 by kbizon           ###   ########.fr       */
+/*   Updated: 2024/04/23 11:06:31 by kbizon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ char	*get_next_line(int fd)
 		return (NULL);
 	next_line = ft_next_line(str);
 	str = ft_new_line(str);
-	
 	return (next_line);
 }
 
