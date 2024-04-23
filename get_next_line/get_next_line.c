@@ -6,7 +6,7 @@
 /*   By: kbizon <kbizon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:21:51 by kbizon            #+#    #+#             */
-/*   Updated: 2024/04/23 11:10:11 by kbizon           ###   ########.fr       */
+/*   Updated: 2024/04/23 11:10:52 by kbizon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ char	*ft_reader(int fd, char *str)
 {
 	char	*buf;
 	int		read_bytes;
+	
 	read_bytes = 1;
-
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (NULL);
