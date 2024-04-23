@@ -6,7 +6,7 @@
 /*   By: kbizon <kbizon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:21:29 by kbizon            #+#    #+#             */
-/*   Updated: 2024/04/21 10:43:21 by kbizon           ###   ########.fr       */
+/*   Updated: 2024/04/21 20:07:24 by kbizon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ size_t	ft_strlen(char *s)
 
 char	*ft_strjoin(char *string, char *buf)
 {
-	char			*str;
-	unsigned int	i;
-	unsigned int	j;
+	char	*str;
+	int		i;
+	int		j;
 
 	if (!string)
 	{
@@ -62,7 +62,7 @@ char	*ft_strchr(char *s, int c)
 	{
 		if (s[i] == (char)c)
 			return ((char *)(s + i));
-		++i;
+		i++;
 	}
 	if ((char)c == 0)
 		return ((char *)(s + i));

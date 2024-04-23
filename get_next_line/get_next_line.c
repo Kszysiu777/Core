@@ -6,7 +6,7 @@
 /*   By: kbizon <kbizon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:21:51 by kbizon            #+#    #+#             */
-/*   Updated: 2024/04/21 10:38:56 by kbizon           ###   ########.fr       */
+/*   Updated: 2024/04/23 10:41:28 by kbizon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ char	*ft_next_line(char *str)
 	int		i;
 
 	i = 0;
+	if (!str[i])
+		return (NULL);
 	while (str[i] && str[i] != '\n')
 		i++;
 	next_line = (char *)malloc((i + 2) * sizeof(char));
@@ -98,28 +100,28 @@ char	*get_next_line(int fd)
 	str = ft_reader(fd, str);
 	if (!str)
 		return (NULL);
-	if (str[0] == 0)
-		return (NULL);
 	next_line = ft_next_line(str);
 	str = ft_new_line(str);
+	
 	return (next_line);
 }
 
-/* int main()
-{
-	char *string;
-	int fd = open("txt", O_RDONLY);
-	string = get_next_line(fd); printf("Your string: %s", string); free(string);
-	string = get_next_line(fd); printf("Your string: %s", string); free(string);
-	string = get_next_line(fd); printf("Your string: %s", string); free(string);
-	string = get_next_line(fd); printf("Your string: %s", string); free(string);
-	string = get_next_line(fd); printf("Your string: %s", string); free(string);
-	string = get_next_line(fd); printf("Your string: %s", string); free(string);
-	string = get_next_line(fd); printf("Your string: %s", string); free(string);
-	string = get_next_line(fd); printf("Your string: %s", string); free(string);
-	string = get_next_line(fd); printf("Your string: %s", string); free(string);
-	string = get_next_line(fd); printf("Your string: %s", string); free(string);
-	string = get_next_line(fd); printf("Your string: %s", string); free(string);
-	string = get_next_line(fd); printf("Your string: %s", string); free(string);
-	close(fd);
-} */
+// int main(void)
+// {
+//     int fd;
+//     char *line;
+
+//     fd = open("check.txt", O_RDONLY);
+//     if (fd == -1)
+//     {
+//         perror("Error opening file");
+//         return 1;
+//     }
+
+//     {
+//         printf("%s", line);
+//         free(line);
+//     }
+//     close(fd);
+//     return 0;
+// }
